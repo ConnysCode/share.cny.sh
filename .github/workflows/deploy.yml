@@ -31,7 +31,7 @@ jobs:
       - name: Build and push the Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: raeys-v8
+          image: share.cny.sh-v8
           tags: latest
           registry: ghcr.io
           dockerfile: ./Dockerfile
