@@ -15,8 +15,8 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
-app.get("/", async (req: Request, res: Response) => {
-  res.json(await requesSpotifyToken());
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).send("share.cny.sh");
 });
 
 app.get("/convert", async (req: Request, res: Response) => {
