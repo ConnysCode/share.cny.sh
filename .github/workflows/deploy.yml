@@ -36,5 +36,6 @@ jobs:
           image: share.cny.sh-v8
           tags: latest
           registry: ghcr.io
+          directory: ${{ github.workspace }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
