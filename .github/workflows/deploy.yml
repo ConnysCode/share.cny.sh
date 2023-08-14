@@ -30,10 +30,14 @@ jobs:
     if: ${{ always() && !cancelled() && needs.build.result == 'success' }}
 
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - name: Build and push the Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: share-cny-sh
+          image: share-qwq-sh
           tags: latest
           registry: ghcr.io
           username: ${{ github.actor }}
