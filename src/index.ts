@@ -19,7 +19,7 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).send("share.cny.sh");
 });
 
-app.get("/convert", async (req: Request, res: Response) => {
+app.post("/convert", async (req: Request, res: Response) => {
   try {
     const url = new URL(toString(req.body.url));
     const appleMusicId = url.searchParams.get("i");
