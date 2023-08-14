@@ -36,6 +36,5 @@ jobs:
           image: share.cny.sh-v8
           tags: latest
           registry: ghcr.io
-          dockerfile: 'Dockerfile'
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
