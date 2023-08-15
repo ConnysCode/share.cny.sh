@@ -37,7 +37,7 @@ jobs:
       - name: Build and push the Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: share-qwq-sh
+          image: share-cny-sh
           tags: latest
           registry: ghcr.io
           username: ${{ github.actor }}
