@@ -31,7 +31,7 @@ You have multiple ways to set up and run share.cny.sh on your own server or mach
 version: "3"
 services:
   share-cny-sh:
-    image: ghcr.io/connyscode/share-qwq-sh:latest
+    image: ghcr.io/connyscode/share-cny-sh:latest
     ports:
       - "<port>:<port>"
     environment:
@@ -45,7 +45,7 @@ Replace **`<port>`**, **`<your_spotify_client_id>`**, and **`<your_spotify_clien
 Open your terminal and run the following command:
 
 ```bash
-docker run -e SPOTIFY_CLIENT_SECRET=<your_spotify_client_secret> -e SPOTIFY_CLIENT_ID=<your_spotify_client_id> -e PORT=<port> ghcr.io/connyscode/share-qwq-sh:latest
+docker run -e SPOTIFY_CLIENT_SECRET=<your_spotify_client_secret> -e SPOTIFY_CLIENT_ID=<your_spotify_client_id> -e PORT=<port> ghcr.io/connyscode/share-cny-sh:latest
 ```
 
 Again, replace the placeholders with your specific values.
