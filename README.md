@@ -16,7 +16,6 @@ Welcome to **share.cny.sh**, a small but powerful application designed to make s
 ## Features
 
 - **Easy Link Conversion**: With share.cny.sh, you can quickly and effortlessly convert Apple Music track links into Spotify links. No need for manual searches or copy-pasting.
-- **Cross-Platform Compatibility**: Enjoy your music on both Apple Music and Spotify without worrying about platform restrictions. Convert and share tracks seamlessly.
 - **Flexible Setup Options**: Whether you prefer using Docker or npm, we've got you covered with multiple setup options to suit your preferences.
 
 ## Setup
