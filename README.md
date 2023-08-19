@@ -36,9 +36,9 @@ You have multiple ways to set up and run share.cny.sh on your own server or mach
        ports:
          - "<port>:3000"
        environment:
-         - PORT=<port>
          - SPOTIFY_CLIENT_ID=<your_spotify_client_id>
          - SPOTIFY_CLIENT_SECRET=<your_spotify_client_secret>
+         - DEBUG=<true|false>
    ```
 
 Replace **`<port>`**, **`<your_spotify_client_id>`**, and **`<your_spotify_client_secret>`** with your desired port number and Spotify API credentials.
