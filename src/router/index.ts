@@ -1,14 +1,19 @@
 import express, { json } from "express";
 import convert from "./convert";
+import Elysia, { t } from "elysia";
 
 export default () => {
-  const app = express();
-  app.use(json());
+  const app = new Elysia();
 
-  app.post("/convert", convert);
+  app.post("/convert", convert, {
+    body: t.Object({
+      url: t.String(),
+    }),
+  });
 
-  app.use("/", (_req, res) => {
-    res.redirect("https://github.com/ConnysCode/share.cny.sh");
+  app.get("/", (ctx) => {
+    ctx.set.redirect = 'https://github.com/ConnysCode/share.cny.sh';
+    return;
   });
 
   return app;

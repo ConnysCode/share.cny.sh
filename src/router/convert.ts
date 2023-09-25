@@ -1,27 +1,38 @@
-import { toString } from "lodash";
 import createCnyShRedirect from "../api/cny-sh/create-redirect";
 import performSpotifySearch from "../api/spotify/perform-spotify-search";
 import getSongTitle from "../utils/get-song-title";
-import replaceLastOccurrence from "../utils/replace-last-occurence";
-import { Request, Response } from "express";
 import debug from "../utils/debug-log";
+import { Context } from "elysia";
+import { random, isEmpty, get, toString } from "lodash";
+import replaceLastOccurrence from "../utils/replace-last-occurence";
 
-export default async (req: Request, res: Response) => {
-  const requestId = `${Math.floor(Math.random() * 1000) + 1}`;
+type reqBody = {
+  url?: string;
+};
+
+export default async ({ body, set }: Context) => {
+  const { url } = body as reqBody;
+  if (!url) {
+    set.status = 400;
+    return;
+  }
+
+  const requestId = `${random(1, 1000)}`;
+
   try {
-    const url = new URL(toString(req.body.url));
-    const appleMusicId = url.searchParams.get("i");
+    const urlObject = new URL(toString(url));
+    const appleMusicId = urlObject.searchParams.get("i");
 
-    debug(requestId, "Starting conversion...", { url, appleMusicId });
+    debug(requestId, "Starting conversion...", { url: urlObject, appleMusicId });
 
-    if (!appleMusicId) {
-      debug(requestId, 'No "i" parameter found in URL.', { url });
-      res.status(400).send();
+    if (isEmpty(appleMusicId)) {
+      debug(requestId, 'No "i" parameter found in URL.', { url: urlObject });
+      set.status = 400;
       return;
     }
 
     const songTitle = replaceLastOccurrence(
-      (await getSongTitle(toString(url))) || "",
+      (await getSongTitle(toString(urlObject))) || "",
       " by ",
       ", "
     );
@@ -29,12 +40,11 @@ export default async (req: Request, res: Response) => {
     debug(requestId, "Song title", { songTitle });
 
     const searchResult = await performSpotifySearch(songTitle, 1, "DE");
-    const spotifyItem = searchResult?.tracks?.items[0];
-    const spotifyUrl = spotifyItem?.external_urls?.spotify;
+    const spotifyUrl = get(searchResult, "tracks.items[0].external_urls.spotify");
 
     if (!spotifyUrl) {
       debug(requestId, "No Spotify URL found");
-      res.status(404).send();
+      set.status = 404;
       return;
     } else {
       debug(requestId, "Spotify URL", { spotifyUrl });
@@ -44,14 +54,16 @@ export default async (req: Request, res: Response) => {
 
     debug(requestId, "CNY.SH URL", { cnyUrl });
 
-    res.status(200).send({
+    set.status = 200;
+    return {
       appleMusicId,
       songTitle,
       spotifyUrl,
       redirectUrl: cnyUrl.redirect,
-    });
+    };
   } catch (error) {
     debug(requestId, "Error", { error });
-    res.status(400).send();
+    set.status = 400;
+    return;
   }
 };
