@@ -25,7 +25,8 @@
     "elysia": "^0.7.13",
     "lodash": "^4.17.21",
     "node-cache": "^5.1.2",
-    "open-graph-scraper": "^6.2.2"
+    "open-graph-scraper": "^6.2.2",
+    "qs": "^6.11.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.197",
