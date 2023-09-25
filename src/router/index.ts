@@ -1,15 +1,10 @@
-import express, { json } from "express";
 import convert from "./convert";
-import Elysia, { t } from "elysia";
+import Elysia from "elysia";
 
 export default () => {
   const app = new Elysia();
 
-  app.post("/convert", convert, {
-    body: t.Object({
-      url: t.String(),
-    }),
-  });
+  app.post("/convert", convert);
 
   app.get("/", (ctx) => {
     ctx.set.redirect = 'https://github.com/ConnysCode/share.cny.sh';
