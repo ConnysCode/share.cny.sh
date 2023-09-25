@@ -1,9 +1,9 @@
-FROM node:20.5.0
+FROM oven/bun
 
 WORKDIR /usr/src
 COPY . . 
 
-RUN npm i
-RUN npx tsc
+RUN bun install
+RUN bun run build
 
-CMD ["npm", "run", "prod"]
+CMD ["bun", "run", "prod"]

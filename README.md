@@ -1,6 +1,6 @@
 # share.cny.sh - Share Apple Music Tracks as Spotify Links
 
-Welcome to **share.cny.sh**, a small but powerful application designed to make sharing Apple Music tracks as Spotify links a breeze. With this tool, you can seamlessly convert Apple Music track links into Spotify links, making it easier for you and your friends to enjoy your favorite music across platforms.
+Welcome to **share.cny.sh**, a small but powerful application - built with bun and elysia - designed to make sharing Apple Music tracks as Spotify links a breeze. With this tool, you can seamlessly convert Apple Music track links into Spotify links, making it easier for you and your friends to enjoy your favorite music across platforms.
 
 ## Table of Contents
 
@@ -9,7 +9,7 @@ Welcome to **share.cny.sh**, a small but powerful application designed to make s
 - [Setup](#setup)
   - [Using docker-compose.yml](#using-docker-composeyml)
   - [Using Docker](#using-docker)
-  - [Using npm](#using-npm)
+  - [Using bun](#using-npm)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -60,13 +60,13 @@ To use the npm setup, make sure you have Node.js v16.x or higher installed on yo
 1. Install dependencies:
 
    ```bash
-   npm install
+   bun install
    ```
 
 2. Build the project:
 
    ```bash
-   npm run build
+   bun run build
    ```
 
 3. Rename the `.env.example` file to `.env` and fill in the following values:

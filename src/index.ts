@@ -4,8 +4,7 @@ import router from "./router";
 dotenv.config();
 
 const app = router();
-const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`🚀 share.cny.sh is running...`);
-});
+})
